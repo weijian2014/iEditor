@@ -9,6 +9,7 @@
 **      Guangxi Normal University 2013
 **
 ****************************************************************************/
+#include <QApplication>
 #include <QPlainTextEdit>
 
 #include "OutputDock.h"
@@ -20,21 +21,21 @@ OutputDock::OutputDock(QWidget *parent, Qt::WindowFlags flag) : QDockWidget(pare
     setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable);
     setAllowedAreas(Qt::BottomDockWidgetArea);
     setMinimumHeight(50);
-    
+
     buildOutputPlainTextEdit = new QPlainTextEdit;
     buildOutputPlainTextEdit->setReadOnly(true);
     buildOutputPlainTextEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    
+
     setWidget(buildOutputPlainTextEdit);
 }
 
 void OutputDock::ShowBuildMessage(const QString &filePath)
 {
     QFile file(filePath);
-    
+
 	if(file.open(QFile::ReadOnly | QFile::Text)){
 		QTextStream in(&file);
-        
+
 #ifndef QT_NO_CURSOR
 		QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
@@ -42,23 +43,23 @@ void OutputDock::ShowBuildMessage(const QString &filePath)
         QString messageText;
         while (!in.atEnd()) {
             messageText = in.readLine();
-            
+
             if (!messageText.isEmpty()) {
                 if (-1 != messageText.indexOf(tr("错误：")) || -1 != messageText.indexOf("error")) {
-                    
+
                     isLinkEnable = false;
                     buildOutputPlainTextEdit->appendHtml(tr("<p><font color=#FF0000>第%1行\t\t%2</font></p>").arg(GetLineNumber(messageText)).arg(messageText));
-                    
+
                 } else if (-1 != messageText.indexOf(tr("警告："))){
-                    
+
                     buildOutputPlainTextEdit->appendHtml(tr("<p><font color=#C16F6F>第%1行\t\t%2</font></p>").arg(GetLineNumber(messageText)).arg(messageText));
-                    
+
                 } else {
                     buildOutputPlainTextEdit->appendHtml(tr("<p><font color=#643C3C>%1</font></p>").arg(messageText));
                 }
             }
         }
-        
+
 #ifndef QT_NO_CURSOR
 		QApplication::restoreOverrideCursor();
 #endif

@@ -10,7 +10,6 @@
 ****************************************************************************/
 #include <QtGui>
 #include <QSettings>
-#include <QTextCodec>
 
 #include "ConfigStruct.h"
 
@@ -25,17 +24,17 @@ ConfigStruct::ConfigStruct()
 void ConfigStruct::CreateHighlightRuleList()
 {
     HighlightRule rule;
-    
+
     //预定义与宏高亮格式
     QTextCharFormat predefineAndMacroFormat;
     predefineAndMacroFormat.setForeground(predefineAndMacroColor);
     QStringList predefineAndMacroStringList(predefineAndMacroRegExpStringList);
     foreach (const QString &predefineAndMacro, predefineAndMacroStringList){
-        rule.regExp = QRegExp(predefineAndMacro);
+        rule.regExp = QRegularExpression(predefineAndMacro);
         rule.format = predefineAndMacroFormat;
         highlightRuleList.append(rule);
     }
-    
+
     //关键字高亮
     QTextCharFormat keywordFormat;
     keywordFormat.setForeground(keywordColor);
@@ -43,7 +42,7 @@ void ConfigStruct::CreateHighlightRuleList()
         keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordList(keywordRegExpStringList);
     foreach (const QString &keyword, keywordList){
-        rule.regExp = QRegExp(keyword);
+        rule.regExp = QRegularExpression(keyword);
         rule.format = keywordFormat;
         highlightRuleList.append(rule);
     }
@@ -54,42 +53,42 @@ void ConfigStruct::CreateHighlightRuleList()
     functionFormat.setForeground(functionColor);
     if (isFunctionFontBold)
         functionFormat.setFontWeight(QFont::Bold);
-    rule.regExp = QRegExp(functionRegExpString);
+    rule.regExp = QRegularExpression(functionRegExpString);
     rule.format = functionFormat;
-    highlightRuleList.append(rule);   
-    
+    highlightRuleList.append(rule);
+
     //字符串高亮样式
     QTextCharFormat stringFormat;
     stringFormat.setForeground(stringColor);
-    rule.regExp = QRegExp(stringRegExpString);
+    rule.regExp = QRegularExpression(stringRegExpString);
     rule.format = stringFormat;
     highlightRuleList.append(rule);
-    
+
     //头文件高亮样式
     QTextCharFormat headFileFormat;
     headFileFormat.setForeground(headFileColor);
-    rule.regExp = QRegExp(headFileRegExpString);
+    rule.regExp = QRegularExpression(headFileRegExpString);
     rule.format = headFileFormat;
     highlightRuleList.append(rule);
-    
+
     //单行注释高亮样式
     QTextCharFormat singleLineCommentFormat;
 	singleLineCommentFormat.setFontItalic(isSingleLineCommentFontItalic);
     singleLineCommentFormat.setForeground(commentColor);
-    rule.regExp = QRegExp(singleLineCommentString);
+    rule.regExp = QRegularExpression(singleLineCommentString);
 	rule.format = singleLineCommentFormat;
 	highlightRuleList.append(rule);
-    
+
     //多行注释高亮样式
-    multipleLinesCommentRegExpStart = QRegExp(multipleLinesCommentRegExpStartString);
-    multipleLinesCommentRegExpEnd = QRegExp(multipleLinesCommentRegExpEndString);
+    multipleLinesCommentRegExpStart = QRegularExpression(multipleLinesCommentRegExpStartString);
+    multipleLinesCommentRegExpEnd = QRegularExpression(multipleLinesCommentRegExpEndString);
     multiLineCommentFormat.setForeground(commentColor);
     multiLineCommentFormat.setFontItalic(isMultiLineCommentFontItalic);//斜体
-    
+
     //数字高亮样式
     QTextCharFormat numberFormat;
     numberFormat.setForeground(numberColor);
-    rule.regExp = QRegExp(numberRegExpString);
+    rule.regExp = QRegularExpression(numberRegExpString);
     rule.format = numberFormat;
     highlightRuleList.append(rule);
 }
@@ -108,7 +107,7 @@ void ConfigStruct::ReadConfig()
     QSettings settings("../iEditor/config/config.ini", QSettings::IniFormat);
     //settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     //settings.setIniCodec(QTextCodec::codecForLocale());
-    
+
     settings.beginGroup("iEditorConfig");
     predefineAndMacroRegExpStringList = settings.value("predefineAndMacroRegExpStringList").toStringList();
     keywordRegExpStringList = settings.value("keywordRegExpStringList").toStringList();
@@ -143,7 +142,7 @@ void ConfigStruct::ReadConfig()
     tabWide = settings.value("tabWide").toInt();
     lineNumberAreaWide = settings.value("lineNumberAreaWide").toInt();
     settings.endGroup();
-    
+
     settings.beginGroup(colorStyle);
     predefineAndMacroColor = settings.value("predefineAndMacroColor").value<QColor>();
     keywordColor = settings.value("keywordColor").value<QColor>();
@@ -162,12 +161,12 @@ void ConfigStruct::ReadConfig()
 
 void ConfigStruct::WriterConfig()
 {
-    
+
     QSettings settings("../iEditor/config/config.ini", QSettings::IniFormat);
     //settings.clear();
     //settings.setIniCodec(QTextCodec::codecForName("UTF-8"));
     //settings.setIniCodec(QTextCodec::codecForLocale());
-        
+
     settings.beginGroup("iEditorConfig");
     settings.setValue("predefineAndMacroRegExpStringList", predefineAndMacroRegExpStringList);
     settings.setValue("keywordRegExpStringList", keywordRegExpStringList);
@@ -202,7 +201,7 @@ void ConfigStruct::WriterConfig()
     settings.setValue("tabWide", tabWide);
     settings.setValue("lineNumberAreaWide", lineNumberAreaWide);
     settings.endGroup();
-    
+
     settings.beginGroup(colorStyle);
     settings.setValue("predefineAndMacroColor", predefineAndMacroColor.name());
     settings.setValue("keywordColor", keywordColor.name());

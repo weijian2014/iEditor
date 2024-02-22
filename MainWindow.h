@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-**      Datetime:   2013年03月21日 星期四 15时43分13秒 
+**      Datetime:   2013年03月21日 星期四 15时43分13秒
 **      Author  :   韦   健
 **      Titles  :   主窗体类，派生于QMainWindow,iEditor主要的类
 **
@@ -15,6 +15,7 @@
 #include <QTextDocument>
 #include <QListWidgetItem>
 #include <QList>
+
 #include "ConfigStruct.h"
 
 class QAction;
@@ -36,7 +37,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow();
-    
+
 protected:
     void closeEvent(QCloseEvent *event);
 
@@ -48,7 +49,7 @@ private slots:
     void SaveAs();
     void OpenRecentFile();
     void Close();
-    
+
     void Revoke();
     void Recover();
     void Cut();
@@ -56,24 +57,24 @@ private slots:
     void Paste();
     void SelectAll();
     void Find();
-    
+
     bool Compile();
     bool Link();
     void Run();
     void StopRun();
-    
+
     void BeginDebug();
     void SingleRun();
     void SingleSkin();
     void SetBreakPoint();
     void DeleteBreakPoint();
     void StopDebug();
-    
+
     void WordCount();
     void FullScreen(bool flags);
     void LockTools(bool flags);
     void Options();
-    
+
     void AboutIEditor();
 
     void ShowPosition();
@@ -102,7 +103,7 @@ private slots:
     void AddNewFileToProject(const QString &fileDir, bool isCProject);
     void AddExistingToProject(const QString &fileDir, bool isCProject);
     void CloseProject();
-    
+
 private:
     void MainWindowSetup();
     void CreateAction();
@@ -117,7 +118,7 @@ private:
     void UpdateRecentProjectFileActions();
     int GetNewTabCount();
     void RemoveNewTabCount(int fileNumber);
-    
+
     void SetNewTextEdit(int index, int newTabCount);
     void CreateTabWidget();
     void SetEnableAction();
@@ -128,7 +129,8 @@ private:
     QString StrippedExecName(const QString &filePath);
     void SetCurrentFile(const QString &filePath);
     void FindString(const QTextCursor &cursor, QTextDocument::FindFlags findFlag);
-    void FindRegExp(const QTextCursor &cursor, QTextDocument::FindFlags findFlag);
+    void FindRegExp(const QTextCursor &cursor,
+                    QTextDocument::FindFlags findFlag);
     void WriteMainWindowConfig();
     void ReadMainWindowConfig();
     void SaveFilesByClose();
@@ -142,12 +144,12 @@ private:
     void AddFileToProject(const QString &);
     void WriteProject();
     void CreateProject(const QString &, const QString &, const QString , int);
-    
+
 private:
     enum { MaxTabs = 20 };
     enum { MaxRecentFiles = 8 };
     enum { MaxRecentProjectFiles = 8};
-    
+
     QAction *newAction;
     QAction *newTabAction;
     QAction *openAction;
@@ -157,7 +159,7 @@ private:
     QAction *recentProjectFilesAction[MaxRecentProjectFiles];
     QAction *closeAction;
     QAction *exitAction;
-    
+
     QAction *revokeAction;
     QAction *recoverAction;
     QAction *cutAction;
@@ -165,19 +167,19 @@ private:
     QAction *pasteAction;
     QAction *selectAllAction;
     QAction *findAction;
-    
+
     QAction *compileAction;
     QAction *linkAction;
     QAction *runAction;
     QAction *stopRunAction;
-    
+
     QAction *beginDebugAction;
     QAction *singleRunAction;
     QAction *singleSkinAction;
     QAction *setBreakPointAction;
     QAction *deleteBreakPointAction;
     QAction *stopDebugAction;
-    
+
     QAction *projectManageAction;
     QAction *outputDockAction;
     QAction *fileToolsBarAction;
@@ -185,15 +187,15 @@ private:
     QAction *buildToolsBarAction;
     QAction *debugToolsBarAction;
     QAction *statusBarAction;
-    
+
     QAction *wordCountAction;
     QAction *fullScreenAction;
     QAction *lockToolsAction;
     QAction *optionsAction;
-    
+
     QAction *aboutQtAction;
     QAction *aboutIEditorAction;
-    
+
     QMenu *fileMenu;
     QMenu *recentFilesMenu;
     QMenu *recentProjectFilesMenu;
@@ -203,14 +205,14 @@ private:
     QMenu *windowMenu;
     QMenu *toolsMenu;
     QMenu *helpMenu;
-    
+
     QToolBar *fileToolBar;
     QToolBar *editToolBar;
     QToolBar *buildToolBar;
     QToolBar *debugToolBar;
-    
+
     QLabel *positionLabel;  //cusor positoin
-    
+
     NewWizard *newWizard;
     TextEditTab *tabWidget;
     FindDialog *findDialog;
@@ -221,10 +223,10 @@ private:
     ProjectTree *projectTree;
     TextEdit *currentTextEdit;
     QList<TextEdit *> textEditList;
-    
+
     QStringList recentFiles;
     QStringList recentProjectFiles;
-    
+
     int currentTabIndex;
     bool isToContinue;  //usr close false
     QString currentFileName;
@@ -233,7 +235,7 @@ private:
     QList<int> fileNumberList;
 
     QString recentDir;
-    
+
     //iEditor project arg
     quint32 magic;
     quint32 version;
@@ -241,23 +243,23 @@ private:
     QString sourceFile;
     QString cFile;
     QString cppFile;
-    
+
     //usr for build
     struct BuildStruct
     {
         //compile
         QString objName;
-        QString exeName;    
+        QString exeName;
         QString objFilePath;
         QString exeFilePath;
-        
+
         QString fileName;   //just file name
         QString fileDir;    //no include file name
         QString fileExecName;    //current file extension name
         QString terminalTitle;  //terminal title for run
         bool isGCC;
     } build;
-    
+
 };//MainWindow
 
 #endif // MAINWINDOW_H

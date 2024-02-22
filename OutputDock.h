@@ -21,21 +21,21 @@ class QPlainTextEdit;
 class OutputDock : public QDockWidget
 {
     Q_OBJECT
-    
+
 public:
-    explicit OutputDock(QWidget *parent = 0, Qt::WindowFlags flag = 0);
+    explicit OutputDock(QWidget *parent = nullptr, Qt::WindowFlags flag = Qt::WindowType::Widget);
     ~OutputDock() {}
-    
+
     void ShowBuildMessage(const QString &filePath);
     void AppendHtmlToBuildOutputPlainTextEdit(const QString &htmlText);
     void ClearBuildOutput();
-    
+
 public:
     bool isLinkEnable;
-    
+
 private:
     int GetLineNumber(const QString &lineText);
-    
+
 private:
     QPlainTextEdit *buildOutputPlainTextEdit;
 };

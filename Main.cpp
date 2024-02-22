@@ -8,7 +8,6 @@
 **
 ****************************************************************************/
 #include <QApplication>
-#include <QTextCodec>
 #include <QTranslator>
 #include <QString>
 
@@ -17,28 +16,25 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    QString translatorPath("");
 
-#ifdef Q_WS_X11 //Linux
+#ifdef Q_OS_LINUX
 
-    QString translatorPath = "/usr/share/qt4/translations/qt_zh_CN.qm";
-    QTextCodec *textc = QTextCodec::codecForLocale();
-    QTextCodec::setCodecForLocale(textc);
-    QTextCodec::setCodecForCStrings(textc);
-    QTextCodec::setCodecForTr(textc);
+    translatorPath = "/usr/share/qt4/translations/qt_zh_CN.qm";
+
 #endif
 
-#ifdef Q_WS_WIN //Windows
+#ifdef Q_OS_WIN
 
-    QString translatorPath = "F:\\Soft\\QtLib\\translations\\qt_zh_CN.qm";
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+    translatorPath =
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\translations\\qt_zh_CN.qm";
+
 #endif
 
     QTranslator translator;
-    translator.load(translatorPath);
+    (void)translator.load(translatorPath);
     app.installTranslator(&translator);
-    
+
     MainWindow mainWindow;
     mainWindow.show();
 

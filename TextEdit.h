@@ -18,6 +18,7 @@
 #include <QSyntaxHighlighter>
 #include <QHash>
 #include <QTextCharFormat>
+#include <QPlainTextEdit>
 
 class Highlighter : public QSyntaxHighlighter
 {

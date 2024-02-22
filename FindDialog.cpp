@@ -8,6 +8,13 @@
 **
 ****************************************************************************/
 #include <QtGui>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QDialogButtonBox>
 
 #include "FindDialog.h"
 
@@ -17,13 +24,13 @@ FindDialog::FindDialog(QWidget *parent) : QDialog(parent)
     isFirst = true;
     findLabel = new QLabel(tr("查　找:"));
     replaceLabel = new QLabel(tr("替换为:"));
-    
+
     findLineEdit = new QLineEdit;
     findLineEdit->setFocus();
     findLineEdit->setFixedWidth(200);
     replaceLineEdit = new QLineEdit;
     replaceLineEdit->setFixedWidth(200);
-    
+
     findForwardButton = new QPushButton(tr("向前(&P)"));
     findForwardButton->setEnabled(false);
     findBackwardButton = new QPushButton(tr("向后(&N)"));
@@ -35,14 +42,14 @@ FindDialog::FindDialog(QWidget *parent) : QDialog(parent)
     clearButton = new QPushButton(tr("清空(&E)"));
     advancedButton = new QPushButton(tr("高级(&A)>>>"));
     advancedButton->setCheckable(true);
-    
+
     documentStartCheckBox = new QCheckBox(tr("从文件开始处查找"));
     matchCaseCheckBox = new QCheckBox(tr("区分大小写"));
     allWordMatchCheckBox = new QCheckBox(tr("全词匹配"));
     useRegExpCheckBox = new QCheckBox(tr("正则表达式"));
-    
+
     advancedGroupBox = new QGroupBox(tr("高级选项"));
-    
+
     connect(findLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(EnableFindButton(QString)));
     connect(findForwardButton, SIGNAL(clicked()), this, SLOT(FindForwardClicked()));
     connect(findBackwardButton, SIGNAL(clicked()), this, SLOT(FindBackwardClicked()));
@@ -52,38 +59,38 @@ FindDialog::FindDialog(QWidget *parent) : QDialog(parent)
     connect(clearButton, SIGNAL(clicked()), this, SLOT(ClearClicked()));
     connect(advancedButton, SIGNAL(toggled(bool)), advancedGroupBox, SLOT(setVisible(bool)));
     connect(advancedButton, SIGNAL(toggled(bool)), this, SLOT(AdvancedButtonClicked(bool)));
-    
+
     QHBoxLayout *findHBLayout = new QHBoxLayout;
     findHBLayout->addWidget(findLabel);
     findHBLayout->addWidget(findLineEdit);
     findHBLayout->addWidget(findForwardButton);
     findHBLayout->addWidget(findBackwardButton);
     findHBLayout->addWidget(closeButton);
-    
+
     QHBoxLayout *replaceHBLayout = new QHBoxLayout;
     replaceHBLayout->addWidget(replaceLabel);
     replaceHBLayout->addWidget(replaceLineEdit);
     replaceHBLayout->addWidget(replaceButton);
     replaceHBLayout->addWidget(replaceAllButton);
     replaceHBLayout->addWidget(clearButton);
-    
+
     QHBoxLayout *advancedHBLayout = new QHBoxLayout;
     advancedHBLayout->addWidget(documentStartCheckBox);
     advancedHBLayout->addStretch();
     advancedHBLayout->addWidget(advancedButton);
-    
+
     QVBoxLayout *topLayout = new QVBoxLayout;
     topLayout->addLayout(findHBLayout);
     topLayout->addLayout(replaceHBLayout);
     topLayout->addLayout(advancedHBLayout);
-    
+
     QGridLayout *advancedGLayout = new QGridLayout;
     advancedGLayout->addWidget(matchCaseCheckBox, 0, 0);
     advancedGLayout->addWidget(allWordMatchCheckBox, 1, 0);
     advancedGLayout->addWidget(useRegExpCheckBox, 0, 1);
     advancedGroupBox->setLayout(advancedGLayout);
     advancedGroupBox->hide();
-    
+
     QVBoxLayout *mainVBLayout = new QVBoxLayout;
     mainVBLayout->addLayout(topLayout);
     spacerItem = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -91,7 +98,7 @@ FindDialog::FindDialog(QWidget *parent) : QDialog(parent)
     mainVBLayout->addWidget(advancedGroupBox);
     setLayout(mainVBLayout);
     layout()->setSizeConstraint(QLayout::SetFixedSize);
-    
+
     raise();
     activateWindow();
     setWindowTitle(tr("查找&替换-iEditor"));
@@ -132,9 +139,9 @@ void FindDialog::FindForwardClicked()
         findFlags += 4;
     if (true == useRegExpCheckBox->isChecked())
         findFlags += 8;
-    
+
     findFlags += 16;
-    
+
     emit FindSignal();
 }
 
@@ -183,21 +190,21 @@ void FindDialog::AdvancedButtonClicked(bool isChange)
 RemoveDialog::RemoveDialog(const QString &filePath, QWidget *parent) : QDialog(parent), filePath(filePath)
 {
     setWindowTitle(tr("删除确认-iEditor"));
-    
+
     messageLabel = new QLabel(tr("<h4>从项目中删除:<h4><p>%1</p>").arg(filePath));
     shiftDeleteCB = new QCheckBox(tr("要彻底从磁盘中删除文件吗？"));
     buttonBox = new QDialogButtonBox( QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
-    
+
     QVBoxLayout *mainVBLayout = new QVBoxLayout;
     mainVBLayout->addWidget(messageLabel);
     mainVBLayout->addWidget(shiftDeleteCB);
     mainVBLayout->addWidget(buttonBox);
-    
+
     setLayout(mainVBLayout);
     raise();
     activateWindow();
     setModal(true);
-    
+
     setFixedSize(sizeHint());
     connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(close()));
     connect(buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(OkButtonClicked()));
@@ -205,7 +212,7 @@ RemoveDialog::RemoveDialog(const QString &filePath, QWidget *parent) : QDialog(p
 
 RemoveDialog::~RemoveDialog()
 {
-    
+
 }
 
 void RemoveDialog::OkButtonClicked()
