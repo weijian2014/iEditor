@@ -1,0 +1,45 @@
+<RCC>
+   <qresource prefix = "/">
+      <file>fontawesome-free-6.4.0/fa-regular-400.ttf</file>
+      <file>RemixIcon-v4.2.0/Document/folder-2-fill.svg</file>
+      <file>RemixIcon-v4.2.0/Document/file-2-fill.svg</file>
+      <file>translations/en_US.qm</file>
+      <file>images/compilerPage.png</file>
+      <file>images/copy.png</file>
+      <file>images/cppFile.png</file>
+      <file>images/cut.png</file>
+      <file>images/deleteBreakPoint.png</file>
+      <file>images/editerPage.png</file>
+      <file>images/close.png</file>
+      <file>images/beginDebug.png</file>
+      <file>images/compile.png</file>
+      <file>images/codeStylePage.png</file>
+      <file>images/exit.png</file>
+      <file>images/find.png</file>
+      <file>images/fullScreen.png</file>
+      <file>images/headFolder.png</file>
+      <file>images/hFile.png</file>
+      <file>images/ieditor.png</file>
+      <file>images/link.png</file>
+      <file>images/lockTools.png</file>
+      <file>images/new.png</file>
+      <file>images/open.png</file>
+      <file>images/options.png</file>
+      <file>images/paste.png</file>
+      <file>images/projectFolder.png</file>
+      <file>images/qt.png</file>
+      <file>images/recover.png</file>
+      <file>images/revoke.png</file>
+      <file>images/run.png</file>
+      <file>images/save.png</file>
+      <file>images/saveAs.png</file>
+      <file>images/selectAll.png</file>
+      <file>images/setBreakPoint.png</file>
+      <file>images/singleRun.png</file>
+      <file>images/singleSkin.png</file>
+      <file>images/sourceFolder.png</file>
+      <file>images/stop.png</file>
+      <file>images/tinterPage.png</file>
+      <file>images/wordCount.png</file>
+   </qresource>
+</RCC>

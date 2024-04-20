@@ -1,7 +1,113 @@
 {
-  "qtConfigure.qtDir": "C:\\Qt",
-  "qtConfigure.qtKitDir": "C:\\Qt\\6.6.2\\mingw_64",
-  "qtConfigure.mingwPath": "C:\\Qt\\Tools\\mingw1120_64",
-  "cmake.cmakePath": "C:\\Qt\\Tools\\CMake_64\\bin\\cmake",
-  "cmake.configureOnOpen": false
+  "qtConfigure.qtDir": "C:/Qt",
+  "qtConfigure.qtKitDir": "C:/Qt/6.6.2/mingw_64",
+  "qtConfigure.mingwPath": "C:/Qt/Tools/mingw1120_64",
+  "cmake.cmakePath": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+  "cmake.buildDirectory": "${workspaceFolder}/build",
+  "cmake.clearOutputBeforeBuild": false, // 禁止每次build都会全部重新编译
+  "cmake.buildArgs": ["--parallel"],
+  "search.exclude": {
+    "**/.vscode": true,
+    "**/.git": true,
+    "**/build": true,
+    "**/lib": true
+  },
+  "output.smartScroll.enabled": true, // 输出智能滚动
+  "git.ignoreLimitWarning": true,
+  "C_Cpp.intelliSenseEngine": "disabled", // C/C++插件的代码补全功能
+  "C_Cpp.autocomplete": "disabled", // C/C++插件的代码补全功能
+  "C_Cpp.errorSquiggles": "disabled", // C/C++插件的编译错误提示功能
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_fallbackStyle": "LLVM", // clangd的可执行文件路径, 远程SSH需要在项目的settings.json中单独设置
+  "clangd.path": "C:/Qt/Tools/QtCreator/bin/clang/bin/clangd.exe",
+  "clangd.detectExtensionConflicts": true, // 是否检测扩展的冲突
+  "clangd.fallbackFlags": [
+    "-std=c++17",
+    "-I${workspaceFolder}/src",
+    "-I${workspaceFolder}/lib",
+    "-I${workspaceFolder}/lib/googletest-1.14.0/include",
+    "-I${workspaceFolder}/src/common",
+    "-I${workspaceFolder}/src/gui",
+    "-IC:/Qt/6.6.2/mingw_64/include",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtConcurrent",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtCore",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtDBus",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtDesigner",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtDesignerComponents",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtDeviceDiscoverySupport",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtExampleIcons",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtFbSupport",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtFreetype",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtGui",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtHarfbuzz",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtHelp",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtJpeg",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsAnimation",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsFolderListModel",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsQmlModels",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsSettings",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsSharedImage",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtLabsWavefrontMesh",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtNetwork",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtOpenGL",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtOpenGLWidgets",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtPacketProtocol",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtPng",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtPrintSupport",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQDocCatch ",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQDocCatchConversionsPrivate",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQDocCatchGeneratorsPrivate",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQml",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlCompiler",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlCore",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlDebug",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlDom",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlIntegration",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlLS",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlLocalStorage",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlModels",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlToolingSettings",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlTypeRegistrar",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlWorkerScript",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQmlXmlListModel",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuick",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickControls2",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickControls2Impl",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickControlsTestUtils",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickDialogs2",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickDialogs2QuickImpl",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickDialogs2Utils",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickEffects",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickLayouts",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickParticles",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickShapes",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickTemplates2",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickTest",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickTestUtils",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtQuickWidgets",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtSql",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtSvg",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtSvgWidgets",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtTest",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtTools",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtUiPlugin",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtUiTools",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtWidgets",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtXml",
+    "-IC:/Qt/6.6.2/mingw_64/include/QtZlib"
+  ],
+  "clangd.arguments": [
+    "--compile-commands-dir=D:/dc/git/ieditor/build/compile_commands.json",
+    //  "--compile-commands-dir=E:/git/ieditor/build/compile_commands.json",
+    "--background-index", // 在后台自动分析文件（基于complie_commands.json)
+    "-j=16", // 同时开启的任务数量
+    "--query-driver=/usr/bin/g++", // 告诉clangd用那个编译器
+    "--clang-tidy", // clang-tidy功能
+    "--clang-tidy-checks=performance-*,bugprone-*",
+    //  "--all-scopes-completion", // 全局补全（会自动补充头文件）
+    //  "--completion-style=detailed", // 更详细的补全内容
+    "--header-insertion=iwyu", // 补充头文件的形式
+    "--pch-storage=memory" // pch优化的位置, memory更快，但内存使用增加
+  ]
 }

@@ -1,2 +1,12 @@
 BasedOnStyle: Google
 SortIncludes: false
+IndentWidth: 3
+TabWidth: 3
+
+---
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Left
+AccessModifierOffset: -3
+---
+
