@@ -4,6 +4,10 @@
 - 纯代码编写界面
 - 不使用系统 API，跨平台
 
+# 演示
+
+![alt text](doc/images/demo.gif)
+
 # 想法
 
 - 使用 cmake 管理 C C++工程
