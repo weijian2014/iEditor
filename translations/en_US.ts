@@ -922,32 +922,32 @@
 <context>
     <name>TextEditTabBar</name>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="53"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="52"/>
         <source>%1%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="264"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="239"/>
         <source>保存提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="265"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="240"/>
         <source>&lt;p&gt;%1 已经改变!&lt;/p&gt;&lt;p&gt;需要保存吗？&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="275"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="250"/>
         <source>保存文件到</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="277"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="252"/>
         <source>所有文件 (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/TextEditTabBar.cpp" line="294"/>
+        <location filename="../src/gui/TextEditTabBar.cpp" line="269"/>
         <source>文件%1保存成功!</source>
         <translation type="unfinished"></translation>
     </message>
